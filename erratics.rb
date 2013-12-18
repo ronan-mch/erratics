@@ -32,7 +32,7 @@ end
 # allow the user to manually request a data update
 get '/refresh' do
   update_sfx_data
-  redirect to('/compare')
+  redirect to('/compare?refresh=true')
 end
 
 # if the user requests a csv
