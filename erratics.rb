@@ -25,7 +25,7 @@ end
 
 post '/compare' do
   aleph_records = parse_aleph_data(params[:alephFile][:tempfile])
-  @@missing_records = get_missing_records(aleph_records)
+  @@missing_records = get_missing_records(aleph_records, @@sfx_records)
 	erb :compare_results
 end
 

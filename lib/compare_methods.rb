@@ -48,14 +48,14 @@ module CompareMethods
     sfx_records.sort
   end
 
-  def get_missing_records(aleph_records)
+  def get_missing_records(aleph_records, sfx_records)
     t1 = Time.now
     not_present = Array.new
     # if aleph records are not present in sfx
     # then keep them separate
-    puts "sfx_records length is #{@@sfx_records.size}"
+    puts "sfx_records length is #{sfx_records.size}"
     aleph_records.each do |key, value|
-      unless @@sfx_records.binary_index(key)
+      unless sfx_records.binary_index(key)
         not_present << value
       end
     end
