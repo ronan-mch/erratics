@@ -20,3 +20,13 @@
   cursor: inherit;
   display: block;
 }
+/**
+Thought about adding some colour, but decided there was a reason I'm not a designer
+body {
+  background-color: rgb(248, 248, 248);
+}
+
+#content {
+    background-color: rgb(255, 255, 255);
+}
+**/

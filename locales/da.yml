@@ -1,0 +1,10 @@
+da:
+  aleph_label: 'Aleph fil'
+  choose_file: 'Vælg fil'
+  compare_holdings_title: 'Sammenligne beholdninger'
+  sfx_updated: 'SFX opdateret'
+  refresh: 'Refresh'
+  refresh_confirm: 'Er du sikker? Det tager lidt tid at genopfriske SFX data'
+  results_header: 'Poster fra udtrækket som ikke findes i SFX'
+  save_as_csv: 'Gem som csv'
+  title: 'Titel'

@@ -1,3 +1,7 @@
+/**
+ * Javascript to enable bootstrap styling of our file upload button
+ * stolen most ingloriously from anonymous heroes of the interwebs
+ */
 $(document)
     .on('change', '.btn-file :file', function() {
         var input = $(this),
@@ -11,4 +15,9 @@ $(document).ready( function() {
         console.log(numFiles);
         $('#js_button_text').text(label);
     });
+
+    $('#js_refresh').click(function(){
+        var text = $('#js_refresh_confirm').text();
+        return confirm(text);
+    })
 });

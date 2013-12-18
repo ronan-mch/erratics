@@ -12,25 +12,24 @@
 <div id="content">
   <section class="container">
     <div class="col-sm-8 col-md-offset-2">
-    <h1>Poster fra udtrækket som ikke findes i SFX</h1>
+    <h1><%= I18n.t :results_header %></h1>
 
-      <%= link_to({:action => 'csv'})  do %>
+      <a href="/csv">
       <button type="button" class="btn btn-default btn-large">
-        <span class="glyphicon glyphicon-save"></span> Gem
+        <span class="glyphicon glyphicon-save"></span> <%= I18n.t :save_as_csv %>
       </button>
-      <% end %>
+      </a>
         <table class="table">
           <thead>
-            <tr><th>Aleph ID</th><th>ISSN</th><th>Title</th><th> </th></tr>
+            <tr><th>Aleph ID</th><th>ISSN</th><th><%= I18n.t :title %></th><th> </th></tr>
           </thead>
-        <% for record in @missing_records %>
+          <% for record in @@missing_records %>
             <tr>
               <td><%= record[:aleph_id] %></td>
               <td><%= record[:issn] %> </td>
-              <td><%= record[:title] %></td>
+              <td><%= record[:title] %> </td>
             </tr>
-
-        <% end %>
+          <% end %>
         </table>
 
       <%= @records_as_csv %>

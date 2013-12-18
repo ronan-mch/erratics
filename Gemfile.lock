@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (3.3.5)
+    binary_search (0.3.0)
     i18n (0.6.9)
     mini_portile (0.5.2)
     multi_json (1.8.2)
@@ -13,6 +14,8 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     rbtree (0.4.1)
+    sax-machine (0.2.1)
+      nokogiri (~> 1.6.0)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -30,8 +33,10 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  binary_search
   i18n
   nokogiri
   rbtree
+  sax-machine
   sinatra
   sinatra-contrib
