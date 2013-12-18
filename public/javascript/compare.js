@@ -12,7 +12,6 @@ $(document)
 
 $(document).ready( function() {
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-        console.log(numFiles);
         $('#js_button_text').text(label);
     });
 
