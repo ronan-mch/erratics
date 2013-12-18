@@ -2,7 +2,7 @@ module CompareMethods
   def parse_aleph_data(file)
     aleph_xml = Nokogiri::XML(File.read(file))
     aleph_xml.remove_namespaces!
-    aleph_records = RBTree.new
+    aleph_records = Hash.new
 
     # iterate over records, parsing id, issn and title using xpath
     aleph_xml.xpath("//record").each do |record|
