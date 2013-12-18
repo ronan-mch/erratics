@@ -41,6 +41,11 @@ get '/csv' do
   render_csv(@@missing_records)
 end
 
+def update_sfx_data
+  puts 'updating sfx data'
+  @@sfx_records = parse_sfx_data
+  @@sfx_updated = Time.now
+end
 
 configure do
   set :sfx_url, 'http://sfx.kb.dk/sfx_local/cgi/public/get_file.cgi?file=institutional_holding.xml'

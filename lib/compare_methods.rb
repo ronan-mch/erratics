@@ -45,7 +45,6 @@ module CompareMethods
     end
     t2 = Time.now
     puts "parsing sfx data took #{time_diff_milli(t1,t2)}"
-    puts sfx_records.inspect
     sfx_records.sort
   end
 
@@ -79,10 +78,6 @@ module CompareMethods
     (finish - start) * 1000.0
   end
 
-  def update_sfx_data
-    puts 'updating sfx data'
-    @@sfx_records = parse_sfx_data
-    @@sfx_updated = Time.now
-  end
+
 
 end
