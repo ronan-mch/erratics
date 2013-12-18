@@ -16,8 +16,11 @@ $(document).ready( function() {
         $('#js_button_text').text(label);
     });
 
+   /**
+    * warning on refresh - not necessary when machine has sufficient juice
     $('#js_refresh').click(function(){
         var text = $('#js_refresh_confirm').text();
         return confirm(text);
     })
+    **/
 });
