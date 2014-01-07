@@ -20,7 +20,7 @@ module CompareMethods
 
 
   def get_sfx_input_stream
-    App.log.info'getting input stream'
+    App.log.info "Getting input stream from #{settings.sfx_url}"
     open('institutional_holding.xml', 'wb') do |file|
       file << open(settings.sfx_url).read
     end
@@ -31,11 +31,11 @@ module CompareMethods
 # this method parses the institutional_holding file
 # and stores it in memory for a week at a time
   def parse_sfx_data
-    App.log.info'parsing sfx_data'
+    App.log.info 'Parsing sfx data'
     t1 = Time.now
     input_stream = File.read(get_sfx_input_stream)
     t2 = Time.now
-    App.log.info"getting input stream took #{time_diff_milli(t1,t2)}"
+    App.log.debug "Getting input stream took #{time_diff_milli(t1,t2)}"
     sfx_records = Array.new
 
     t1 = Time.now
@@ -44,7 +44,8 @@ module CompareMethods
       sfx_records << item.issn.to_sym unless item.issn.nil?
     end
     t2 = Time.now
-    App.log.info "parsing sfx data took #{time_diff_milli(t1,t2)}"
+    App.log.debug "Parsing sfx data took #{time_diff_milli(t1,t2)}"
+    App.log.debug "SFX holdings length is #{sfx_records.size}"
     sfx_records.sort
   end
 
@@ -53,14 +54,13 @@ module CompareMethods
     not_present = Array.new
     # if aleph records are not present in sfx
     # then keep them separate
-    App.log.info"sfx_records length is #{sfx_records.size}"
     aleph_records.each do |key, value|
       unless sfx_records.binary_index(key)
         not_present << value
       end
     end
     t2 = Time.now
-    App.log.info"getting missing records took #{time_diff_milli(t1,t2)}"
+    App.log.info "Getting missing records took #{time_diff_milli(t1,t2)}"
     not_present
   end
 
