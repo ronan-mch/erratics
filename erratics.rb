@@ -8,6 +8,7 @@ require 'open-uri'
 require 'binary_search/native'
 require './lib/sfx_parser'
 require './lib/compare_methods'
+require './lib/app'
 include SFX_Parser
 include CompareMethods
 
@@ -42,7 +43,7 @@ get '/csv' do
 end
 
 def update_sfx_data
-  puts 'updating sfx data'
+  App.log.info 'updating sfx data'
   @@sfx_records = parse_sfx_data
   @@sfx_updated = Time.now
 end
