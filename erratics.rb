@@ -52,5 +52,4 @@ configure do
   set :sfx_url, 'http://sfx.kb.dk/sfx_local/cgi/public/get_file.cgi?file=institutional_holding.xml'
   @@sfx_updated ||= nil
   @@sfx_records ||= nil
-  update_sfx_data if @@sfx_records.nil?
 end

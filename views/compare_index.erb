@@ -15,7 +15,11 @@
   <form class="form-inline" role="form" method="post" enctype="multipart/form-data">
     <fieldset>
   <legend>
-    <%= "#{I18n.t(:sfx_updated)}: #{@@sfx_updated.strftime("%d/%m/%Y %I:%M%p")}" %>
+    <% if @@sfx_updated %>
+        <%= "#{I18n.t(:sfx_updated)}: #{@@sfx_updated.strftime("%d/%m/%Y %I:%M%p")}" %>
+    <% else %>
+        <%= "#{I18n.t(:sfx_blank)}" %>
+    <% end %>
     <a id="js_refresh" class="btn btn-warning pull-right" href="/refresh">
       <span class="glyphicon glyphicon-refresh"></span>
       <%= I18n.t :refresh %>

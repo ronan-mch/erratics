@@ -8,3 +8,4 @@ da:
   results_header: 'Poster fra udtrækket som ikke findes i SFX'
   save_as_csv: 'Gem som csv'
   title: 'Titel'
+  sfx_blank: "Ingen SFX data"
