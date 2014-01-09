@@ -6,5 +6,5 @@ module App
   # init
   self.log = Logger.new('log/log', 'daily')
   self.log.formatter = proc {|severity, datetime, progname, msg|
-                        "#{severity} :: #{datetime.strftime('%Y-%m-%d')} :: #{progname} :: #{msg}\n"}
+                        "#{severity} :: #{datetime.strftime('%Y-%m-%d %H:%M:%S' )} #{progname}:: #{msg}\n"}
 end
