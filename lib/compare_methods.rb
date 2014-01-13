@@ -7,7 +7,6 @@ module CompareMethods
     # iterate over records, parsing id, issn and title using xpath
     aleph_xml.xpath("//record").each do |record|
       record_hash = Hash.new
-
       record_hash[:aleph_id] = record.xpath("datafield[@tag='001']/subfield[@code='a']").text
       record_hash[:issn] = record.xpath("datafield[@tag='022']/subfield[@code='a']").text
       record_hash[:title] = record.xpath("datafield[@tag='245']/subfield[@code='a']").text
@@ -32,35 +31,25 @@ module CompareMethods
 # and stores it in memory for a week at a time
   def parse_sfx_data
     App.log.info 'Parsing sfx data'
-    t1 = Time.now
     input_stream = File.read(get_sfx_input_stream)
-    t2 = Time.now
-    App.log.debug "Getting input stream took #{time_diff_milli(t1,t2)}"
     sfx_records = Array.new
-
-    t1 = Time.now
     Holdings.parse(input_stream).items.each do |item|
-      sfx_records << item.eissn.to_sym unless item.eissn.nil?
-      sfx_records << item.issn.to_sym unless item.issn.nil?
+      sfx_records << item.eissn.downcase.to_sym unless item.eissn.nil?
+      sfx_records << item.issn.downcase.to_sym unless item.issn.nil?
     end
-    t2 = Time.now
-    App.log.debug "Parsing sfx data took #{time_diff_milli(t1,t2)}"
     App.log.debug "SFX holdings length is #{sfx_records.size}"
     sfx_records.sort
   end
 
   def get_missing_records(aleph_records, sfx_records)
-    t1 = Time.now
     not_present = Array.new
     # if aleph records are not present in sfx
     # then keep them separate
     aleph_records.each do |key, value|
-      unless sfx_records.binary_index(key)
+      unless sfx_records.binary_index(key.downcase)
         not_present << value
       end
     end
-    t2 = Time.now
-    App.log.info "Getting missing records took #{time_diff_milli(t1,t2)}"
     not_present
   end
 
@@ -72,12 +61,5 @@ module CompareMethods
       end
     end
   end
-
-
-  def time_diff_milli(start, finish)
-    (finish - start) * 1000.0
-  end
-
-
 
 end

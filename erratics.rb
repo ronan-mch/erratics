@@ -43,7 +43,7 @@ get '/csv' do
 end
 
 def update_sfx_data
-  App.log.info 'updating sfx data'
+  App.log.info 'Updating sfx data'
   @@sfx_records = parse_sfx_data
   @@sfx_updated = Time.now
 end
